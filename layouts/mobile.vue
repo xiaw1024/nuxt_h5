@@ -19,7 +19,9 @@
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import './../assets/styles/wap/index.scss';
+
     .header,
     .footer {
         padding: 10px;
@@ -28,7 +30,7 @@
     }
 
     .main {
-        padding: 20px;
+        // padding: 20px;
     }
 
     .nav {
