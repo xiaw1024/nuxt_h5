@@ -18,26 +18,17 @@ export default defineNuxtConfig({
         head: {
           viewport: 'width=device-width,initial-scale=1',
           link: [
-            { rel: 'icon', href: '/favicon.ico', sizes: 'any' }
+            { rel: 'icon', href: './favicon.ico', sizes: 'any' }
           ],
           meta: [
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { name: 'description', content: 'EICC' },
-            {
-              name: 'apple-mobile-web-app-status-bar-style',
-              content: 'black-translucent',
-            },
+            {charset: 'utf-8'},
+            // { "http-equiv": "X-UA-Compatible", "content": "IE=edge" },
+            {"http-equiv": "pragma", "content": "no-cache"},
+            {"http-equiv": "Cache-Control", "content": "no-cache, must-revalidate"},
+            {"http-equiv": "expires", "content": "0"},
+            { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, user-scalable=0, viewport-fit=cover' },
+            { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent'},
           ],
-        //   <meta charset="utf-8" />
-		// <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		// <meta http-equiv="pragma" content="no-cache"> 
-		// <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
-		// <meta http-equiv="expires" content="0">
-		// <meta
-		// 	name="viewport"
-		// 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no,user-scalable=0"
-		// />
-		// <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,viewport-fit=cover, user-scalable=0" name="viewport" />
         },
       },
 
@@ -60,7 +51,7 @@ export default defineNuxtConfig({
             propList: ['*'], // 指定转换的css属性的单位，*代表全部css属性的单位都进行转换
             // viewportUnit: 'vw', // 指定需要转换成的视窗单位，默认vw
             // fontViewportUnit: 'vw', // 指定字体需要转换成的视窗单位，默认vw
-            exclude: [/node_modules/i,/components\/pc/i],
+            exclude: [/node_modules/i,/components\/pc/i,/default/i],
             // 转换的黑名单，在黑名单里面的我们可以写入字符串，只要类名包含有这个字符串，就不会被匹配。比如selectorBlackList: ['wrap'],它表示形如wrap,my-wrap,wrapper这样的类名的单位，都不会被转换
             selectorBlackList: ['ignore', 'van'], // 指定不转换为视窗单位的类名，
             minPixelValue: 1, // 默认值1，小于或等于1px则不进行转换

@@ -2,7 +2,7 @@
     <div>
       <component :is="layout == 'default' ? PcDetail : MbDetail" />
     </div>
-  </template>
+</template>
   
   <script setup>
   const PcDetail = resolveComponent('LazyPcDetail');

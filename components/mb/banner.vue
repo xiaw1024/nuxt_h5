@@ -26,7 +26,6 @@ const List = [
 
 .about {
   width: 375px;
-  height: 20px;
   background-color: red;
 }
 </style>

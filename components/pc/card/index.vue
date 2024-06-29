@@ -1,7 +1,14 @@
 <template>
   <div class="card" @click="goToDetail">
     <img v-if="data.type == 1" :src="data.url" alt="" />
-    <video v-if="data.type == 2" :src="data.url" controls></video>
+    <div class="play_btn" v-if="data.type == 2">
+      <video  :src="data.url" controls></video>
+      <img class="playicon" src="~/assets/img/play.png" alt="">
+    </div>
+    <div class="info">
+      <p class="title">{{data.title}}</p>
+      <span class="date">{{data.time}}</span>
+    </div>
   </div>
 </template>
 <script setup>

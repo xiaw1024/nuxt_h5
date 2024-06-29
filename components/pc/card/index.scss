@@ -1,8 +1,5 @@
 .card{
-    border-radius: 10px;
     overflow: hidden;
-    margin: 10px 0;
-    background: red;
       img{
           width: 100%;
   
@@ -10,5 +7,43 @@
       video{
           width: 100%;
           height: auto
+      }
+      .info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 28px;
+        margin: 24px 0;
+        .title{
+            font-family: HelveticaNeue, HelveticaNeue;
+            font-weight: 500;
+            font-size: 24px;
+            color: #333333;
+            line-height: 28px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+        }
+        .date{
+            font-family: HelveticaNeue;
+            font-size: 20px;
+            color: #999999;
+            min-width:90px ;
+            text-align: right;
+
+        }
+      }
+
+      .play_btn{
+        position: relative;
+        .playicon{
+            width: 53px;
+            height: 53px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
       }
    }
