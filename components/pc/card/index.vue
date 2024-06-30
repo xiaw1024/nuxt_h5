@@ -5,7 +5,7 @@
       <video  :src="data.url" controls></video>
       <img class="playicon" src="~/assets/img/play.png" alt="">
     </div>
-    <div class="info">
+    <div class="info" v-show="!hide">
       <p class="title">{{data.title}}</p>
       <span class="date">{{data.time}}</span>
     </div>
@@ -23,6 +23,10 @@
             default:()=>{
                 return {}
             }
+        },
+        hide:{
+          type:Boolean,
+          default:false
         }
     })
     const emit = defineEmits(['click'])

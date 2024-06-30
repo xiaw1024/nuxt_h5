@@ -17,11 +17,6 @@
     let layout = deviceType(headers["user-agent"]).type == "pc" ? "default" : "mobile";
     useState("layout", () => layout);
   }
-  if(process.client){
-    let layout= localStorage.getItem("login")=='true'?'default':'login'
-    console.log("layout",layout);
-    useState("layout", () => layout);
-  }
 
   let layout = useState("layout");
 

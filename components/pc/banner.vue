@@ -34,6 +34,20 @@ const List = [
         time:'6月13日',
         content:'内容',
         url:'https://cmsres.dianzhenkeji.com/transcode/2020/5/27/1265458130520657920.mp4'
+    },
+    {
+        type:1,
+        title:'Longmen Grottoes: A Treasure of One Day Tour in Henan Longmen Grottoes: A Treasure of One Day Tour in Henan Longmen Grottoes: A Treasure of One Day Tour in Henan',
+        content:'内容',
+        time:'6月13日',
+        url:'https://media2.hndt.com/data_01/1/1/2024/01/15/6ecdcf4c8d1a1f305dbd1d97b63a8f0b.png'
+    },
+    {
+        type:2,
+        title:'Longmen Grottoes: A Treasure of One Day Tour in Henan',
+        time:'6月13日',
+        content:'内容',
+        url:'https://cmsres.dianzhenkeji.com/transcode/2020/5/27/1265458130520657920.mp4'
     }
 ]
 </script>
