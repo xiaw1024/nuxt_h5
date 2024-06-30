@@ -25,7 +25,8 @@
   onMounted(() => {
     window.onresize = throttle(() => {
       let w = window.innerWidth;
-      if (w <= 690) { // 断点
+      if(deviceType(headers["user-agent"]).type == "pc" ){
+      // if (w <= 690) { // 断点
         useState("layout").value = "mobile";
       } else {
         useState("layout").value = "default";
