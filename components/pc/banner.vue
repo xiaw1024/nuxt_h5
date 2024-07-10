@@ -12,44 +12,59 @@
     <img class="cover" src="~/assets/img/cover.png" alt="" />
 
     <div class="container">
-        <template v-for="(item,index) in List" :key="index">
+        <template v-for="item in List" :key="item.id">
         <PcCard :data="item"></PcCard>
         </template>
     </div>
 </div>
 </template>
 
-<script setup>
-const List = [
-    {
-        type:1,
-        title:'Longmen Grottoes: A Treasure of One Day Tour in Henan Longmen Grottoes: A Treasure of One Day Tour in Henan Longmen Grottoes: A Treasure of One Day Tour in Henan',
-        content:'内容',
-        time:'6月13日',
-        url:'https://media2.hndt.com/data_01/1/1/2024/01/15/6ecdcf4c8d1a1f305dbd1d97b63a8f0b.png'
-    },
-    {
-        type:2,
-        title:'Longmen Grottoes: A Treasure of One Day Tour in Henan',
-        time:'6月13日',
-        content:'内容',
-        url:'https://cmsres.dianzhenkeji.com/transcode/2020/5/27/1265458130520657920.mp4'
-    },
-    {
-        type:1,
-        title:'Longmen Grottoes: A Treasure of One Day Tour in Henan Longmen Grottoes: A Treasure of One Day Tour in Henan Longmen Grottoes: A Treasure of One Day Tour in Henan',
-        content:'内容',
-        time:'6月13日',
-        url:'https://media2.hndt.com/data_01/1/1/2024/01/15/6ecdcf4c8d1a1f305dbd1d97b63a8f0b.png'
-    },
-    {
-        type:2,
-        title:'Longmen Grottoes: A Treasure of One Day Tour in Henan',
-        time:'6月13日',
-        content:'内容',
-        url:'https://cmsres.dianzhenkeji.com/transcode/2020/5/27/1265458130520657920.mp4'
-    }
-]
+<script setup >
+// let List = [
+//     {
+//         type:1,
+//         title:'Longmen Grottoes: A Treasure of One Day Tour in Henan Longmen Grottoes: A Treasure of One Day Tour in Henan Longmen Grottoes: A Treasure of One Day Tour in Henan',
+//         content:'内容',
+//         time:'6月13日',
+//         url:'https://media2.hndt.com/data_01/1/1/2024/01/15/6ecdcf4c8d1a1f305dbd1d97b63a8f0b.png'
+//     },
+//     {
+//         type:2,
+//         title:'Longmen Grottoes: A Treasure of One Day Tour in Henan',
+//         time:'6月13日',
+//         content:'内容',
+//         url:'https://cmsres.dianzhenkeji.com/transcode/2020/5/27/1265458130520657920.mp4'
+//     },
+//     {
+//         type:1,
+//         title:'Longmen Grottoes: A Treasure of One Day Tour in Henan Longmen Grottoes: A Treasure of One Day Tour in Henan Longmen Grottoes: A Treasure of One Day Tour in Henan',
+//         content:'内容',
+//         time:'6月13日',
+//         url:'https://media2.hndt.com/data_01/1/1/2024/01/15/6ecdcf4c8d1a1f305dbd1d97b63a8f0b.png'
+//     },
+//     {
+//         type:2,
+//         title:'Longmen Grottoes: A Treasure of One Day Tour in Henan',
+//         time:'6月13日',
+//         content:'内容',
+//         url:'https://cmsres.dianzhenkeji.com/transcode/2020/5/27/1265458130520657920.mp4'
+//     }
+// ]
+// 查询指定栏目下的稿件列表：https://eicc.hndt.com/mobile/cms/articles?channelId=1810136737417199617&pageNo=1&pageSize=10 查询稿件详情：https://eicc.hndt.com/mobile/cms/articlewithrelated?articleId=1810137459849887745
+let List=ref([])
+let pageNo=1,pageSize=10
+const getList = async()=>{
+    const data = await useFetch(`https://eicc.hndt.com/mobile/cms/articles?channelId=1810136737417199617&pageNo=${pageNo}&pageSize=${pageSize}`)
+    let {data:{_rawValue:{code,msg,result:{content}}}}=data
+    console.log(code,msg,content,'sda')
+    if(code != 0) return
+    List.value=content
+    
+}
+getList()
+
+
+// console.log(List,'List');
 </script>
 <style lang="scss" scoped> 
 .banner{
