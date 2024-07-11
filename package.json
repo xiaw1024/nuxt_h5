@@ -13,5 +13,8 @@
     "nuxt": "^3.4.3",
     "postcss-px-to-viewport-8-plugin": "^1.2.5",
     "sass": "^1.77.6"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.11"
   }
 }

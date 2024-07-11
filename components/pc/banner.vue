@@ -53,16 +53,30 @@
 // 查询指定栏目下的稿件列表：https://eicc.hndt.com/mobile/cms/articles?channelId=1810136737417199617&pageNo=1&pageSize=10 查询稿件详情：https://eicc.hndt.com/mobile/cms/articlewithrelated?articleId=1810137459849887745
 let List=ref([])
 let pageNo=1,pageSize=10
-const getList = async()=>{
-    const data = await useFetch(`https://eicc.hndt.com/mobile/cms/articles?channelId=1810136737417199617&pageNo=${pageNo}&pageSize=${pageSize}`)
+let testNaveUrl='https://pubmod.hntv.tv/mobile/cms/channelsbyparentchanneid?channelId=1760954163992039426'
+let testListUrl='https://pubmod.hntv.tv/mobile/cms/articles?channelId=1760504763108921345&pageNo=1&pageSize=20'
+let prodUrl=`https://eicc.hndt.com/mobile/cms/articles?channelId=1810136737417199617&pageNo=${pageNo}&pageSize=${pageSize}`
+// const getList = async()=>{
+//     const data = await useFetch(prodUrl)
+//     console.log(data,'data');
+//     let {data:{_rawValue:{code,msg,result:{content}}}}=data
+//     console.log(code,msg,content,'sda')
+//     if(code != 0) return
+//     List.value=content
+    
+// }
+// getList()
+
+const getTestList = async()=>{
+    const data = await useFetch(testListUrl)
+    console.log(data,'data');
     let {data:{_rawValue:{code,msg,result:{content}}}}=data
     console.log(code,msg,content,'sda')
     if(code != 0) return
     List.value=content
     
 }
-getList()
-
+getTestList()
 
 // console.log(List,'List');
 </script>

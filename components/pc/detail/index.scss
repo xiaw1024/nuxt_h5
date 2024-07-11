@@ -78,30 +78,42 @@
                 margin-left: 50px;
             }
         }
-    }
-    .lines{
-        width: 100%;
-        border-top: 1px solid rgba(151, 151, 151, 1);
-        margin: 29px auto 38px auto;
-        opacity: 0.27;
-    }
-    .like_box{
-        margin-top: 10px;
-        text-align: right;
-        .like{
-            width: 30px;
-            height: 30px;
+        .lines{
+            width: 100%;
+            border-top: 1px solid rgba(151, 151, 151, 1);
+            margin: 29px auto 38px auto;
+            opacity: 0.27;
+            
         }
-        .liked{
-            width: 40px;
-            height: 40px;
+        .like_box{
+            margin-top: 10px;
+            text-align: right;
+            .like{
+                width: 30px;
+                height: 30px;
+            }
+            .liked{
+                width: 40px;
+                height: 40px;
+            }
+            span{
+                font-size: 14px;
+                color: #333333;
+                font-family: SourceHanSansCN, SourceHanSansCN;
+                font-weight: 400;
+            }
         }
-        span{
-            font-size: 14px;
-            color: #333333;
-            font-family: SourceHanSansCN, SourceHanSansCN;
-            font-weight: 400;
+        .article_content{
+            font-size: 24px;
+            text-indent: 2em;
+            p{
+
+                video{
+                    width: 100% !important;
+                }
+            }
         }
     }
+    
     
 }
