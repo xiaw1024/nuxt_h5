@@ -15,11 +15,13 @@
     <div class="detail_content">
         <p class="article_title">{{articleData.title}}</p>
         <p class="article_info">
-            <span>Publish Site：{{articleData.origin}}</span>
-            <span class="date">{{articleData.date}}</span>
+            <span>Publish Site：{{articleData.articleOrigin}}</span>
+            <span class="date">{{timeParse(articleData.publishDate) }}</span>
         </p>
         <div class="lines"></div>
-        <PcCard :data="articleData" :hide="true"></PcCard>
+        <MbCard :data="articleData" :hide="true"></MbCard>
+        <div v-html="articleData.contentBody" class="article_content"></div>
+
         <div class="like_box" @click="handleLike">
             <img v-if="articleData.like=='0'" class="like" src="~/assets/img/like.png" alt="">
             <img v-else class="liked" src="~/assets/img/liked.png" alt="">
@@ -33,21 +35,20 @@
 </template>
 <script setup>
     import { useRoute } from 'vue-router';
-    const articleData={
-        title:'Longmen Grottoes: A Longmen Grottoes: A  ',
-        origin:'Sarah',
-        date:'2024-06-13 13:33',
-        like:'1',
-        likeCount:0,
-        type:2,
-        time:'2024-06-13 13:33',
-        url:'https://cmsres.dianzhenkeji.com/transcode/2020/5/27/1265458130520657920.mp4',
-    }
+    // const articleData={
+    //     title:'Longmen Grottoes: A Longmen Grottoes: A  ',
+    //     origin:'Sarah',
+    //     date:'2024-06-13 13:33',
+    //     like:'1',
+    //     likeCount:0,
+    //     type:2,
+    //     time:'2024-06-13 13:33',
+    //     url:'https://cmsres.dianzhenkeji.com/transcode/2020/5/27/1265458130520657920.mp4',
+    // }
  const route = useRoute();
  const { id } = route.query;
- const type=ref('')
- type.value=id
- console.log(id,route,'iddd');
+let {articleData,timeParse} =  useDetail(id)
+ console.log(id,articleData,'iddd');
  const handleLike=()=>{
     if(articleData.like=='0'){
         articleData.like='1'

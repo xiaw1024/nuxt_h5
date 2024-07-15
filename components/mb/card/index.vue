@@ -1,8 +1,8 @@
 <template>
   <div class="card" @click="goToDetail">
     <div class="round_cell">
-    <img v-if="data.type == 1" :src="data.url" alt="" />
-    <div class="play_btn" v-if="data.type == 2">
+    <img v-if="data.articleType == 0" :src="data?.coverImagesList[0]?.url||''"  alt="" />
+    <div class="play_btn" v-if="data.articleType == 1">
       <video  :src="data.url" controls></video>
       <img class="playicon" src="~/assets/img/play.png" alt="">
     </div>
@@ -32,7 +32,7 @@
         }
     })
     const goToDetail = () => {
-  router.push(`/detail?id=${props.data.type}`);
+  router.push(`/detail?id=${props.data.id}`);
 };
 </script>
 <style lang="scss" scoped>
