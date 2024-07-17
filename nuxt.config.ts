@@ -71,4 +71,5 @@ export default defineNuxtConfig({
     },
 
   modules: ['@vant/nuxt'],
+  compatibilityDate: '2024-07-16',
 })

@@ -16,17 +16,17 @@
         <span class="date">{{ timeParse(articleData.publishDate) }}</span>
       </p>
       <div class="lines"></div>
-      <PcCard :data="articleData" :hide="true"></PcCard>
-      <div v-html="articleData.contentBody" class="article_content"></div>
+      <!-- <PcCard :data="articleData" :hide="true"></PcCard> -->
+        <PcRichArea :content="articleData.contentBody"></PcRichArea>
       <div class="like_box" @click="handleLike">
         <img
-          v-if="articleData.like == '0'"
+          v-if="likes"
           class="like"
           src="~/assets/img/like.png"
           alt=""
         />
         <img v-else class="liked" src="~/assets/img/liked.png" alt="" />
-        <span>{{ articleData.likeCount }}</span>
+        <span>{{ articleData.collection }}</span>
       </div>
     </div>
   </div>
@@ -71,14 +71,9 @@ const getDetail = async () => {
   });
 };
 getDetail();
+let likes=ref(false)
 const handleLike = () => {
-  if (articleData.like == "0") {
-    articleData.like = "1";
-    articleData.likeCount++;
-  } else {
-    articleData.like = "0";
-    articleData.likeCount--;
-  }
+  likes.value=!likes.value
 };
 const timeParse = (time) => {
   if (time) {

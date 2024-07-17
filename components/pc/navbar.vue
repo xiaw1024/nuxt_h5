@@ -2,11 +2,11 @@
   <div v-for="(item,index) in props.item" class="manue_item" :key="index" >
     <div class="first_item" @click="handleToggle(item)">
         <img :class="['arrow',item.toggle?'expand':'']" src="~/assets/img/arrow_close.png" alt="">
-        <span class="menu_name">{{item.name}}</span>
+        <span class="menu_name">{{item.channelName}}</span>
     </div>
     <div v-for="(ele,idx) in item.children" class="second_item" :key="idx" v-show="item.toggle">
         <span class="dot"></span>
-        <span class="second_name">{{ele.name}}</span>
+        <span class="second_name">{{ele.channelName}}</span>
     </div>
   </div>
 </template>

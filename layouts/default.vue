@@ -74,7 +74,7 @@
         </div>
       </div>
       <div v-show="toggle">
-        <PcNavbar :item="channels"></PcNavbar>
+        <PcNavbar :item="columList"></PcNavbar>
       </div>
       <div class="lines"></div>
       <div class="backend">
@@ -117,84 +117,8 @@ const toggle = ref(false);
 const handleToggle = () => {
   toggle.value = !toggle.value;
 };
-const channels = ref([
-  {
-    name: "YouTube",
-    url: "",
-    toggle: false,
-    children: [
-      {
-        name: "Andy",
-        url: "",
-      },
-      {
-        name: "Sarah备份",
-        url: "",
-      },
-      {
-        name: "Cody",
-        url: "",
-      },
-    ],
-  },
-  {
-    name: "twitter",
-    url: "",
-    toggle: false,
-    children: [
-      {
-        name: "Andy",
-        url: "",
-      },
-      {
-        name: "Sarah备份",
-        url: "",
-      },
-      {
-        name: "Cody",
-        url: "",
-      },
-    ],
-  },
-  {
-    name: "ins",
-    url: "",
-    toggle: false,
-    children: [
-      {
-        name: "Andy",
-        url: "",
-      },
-      {
-        name: "Sarah备份",
-        url: "",
-      },
-      {
-        name: "Cody",
-        url: "",
-      },
-    ],
-  },
-  {
-    name: "facebook",
-    url: "",
-    toggle: false,
-    children: [
-      {
-        name: "Andy",
-        url: "",
-      },
-      {
-        name: "Sarah备份",
-        url: "",
-      },
-      {
-        name: "Cody",
-        url: "",
-      },
-    ],
-  },
-]);
+const {columList} = useColumn()
+
 </script>
 <style lang="scss" scoped>
 @import "./../assets/styles/pc/index.scss";

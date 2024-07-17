@@ -19,13 +19,12 @@
             <span class="date">{{timeParse(articleData.publishDate) }}</span>
         </p>
         <div class="lines"></div>
-        <MbCard :data="articleData" :hide="true"></MbCard>
-        <div v-html="articleData.contentBody" class="article_content"></div>
-
+        <!-- <MbCard :data="articleData" :hide="true"></MbCard> -->
+        <MbRichArea :content="articleData.contentBody"></MbRichArea>
         <div class="like_box" @click="handleLike">
-            <img v-if="articleData.like=='0'" class="like" src="~/assets/img/like.png" alt="">
+            <img v-if="likes" class="like" src="~/assets/img/like.png" alt="">
             <img v-else class="liked" src="~/assets/img/liked.png" alt="">
-            <span>{{articleData.likeCount}}</span>
+            <span>{{articleData.collection}}</span>
         </div>
     </div>
     
@@ -34,7 +33,8 @@
   </div>
 </template>
 <script setup>
-    import { useRoute } from 'vue-router';
+    import { on } from 'events';
+import { useRoute } from 'vue-router';
     // const articleData={
     //     title:'Longmen Grottoes: A Longmen Grottoes: A  ',
     //     origin:'Sarah',
@@ -49,16 +49,17 @@
  const { id } = route.query;
 let {articleData,timeParse} =  useDetail(id)
  console.log(id,articleData,'iddd');
- const handleLike=()=>{
-    if(articleData.like=='0'){
-        articleData.like='1'
-        articleData.likeCount++
-    }else{
-        articleData.like='0'
-        articleData.likeCount--
-    }
-}
+let likes=ref(false)
+const handleLike = () => {
+  likes.value=!likes.value
+};
+
 </script>
 <style lang='scss' scoped>
- @import './index.scss';
+ @use './index.scss';
+</style>
+<style module="classes">
+.red {
+  color: green;
+}
 </style>
