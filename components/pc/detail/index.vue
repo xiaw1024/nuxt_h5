@@ -17,14 +17,18 @@
       </p>
       <div class="lines"></div>
       <!-- <PcCard :data="articleData" :hide="true"></PcCard> -->
-        <PcRichArea :content="articleData.contentBody"></PcRichArea>
+      <!-- 图文 -->
+      <PcRichArea
+        v-if="articleData.articleType == 0"
+        :content="articleData.contentBody"
+      ></PcRichArea>
+      <!-- 视频 -->
+      <PcVideoType
+        v-if="articleData.articleType == 1"
+        :articleData="articleData"
+      ></PcVideoType>
       <div class="like_box" @click="handleLike">
-        <img
-          v-if="likes"
-          class="like"
-          src="~/assets/img/like.png"
-          alt=""
-        />
+        <img v-if="likes" class="like" src="~/assets/img/like.png" alt="" />
         <img v-else class="liked" src="~/assets/img/liked.png" alt="" />
         <span>{{ articleData.collection }}</span>
       </div>
@@ -32,8 +36,7 @@
   </div>
 </template>
 <script setup>
-import { useRoute } from "vue-router";
-import dayjs from "dayjs";
+// import { useRoute } from "vue-router";
 
 // const articleData={
 //     title:'Longmen Grottoes: A Longmen Grottoes: A  ',
@@ -45,44 +48,16 @@ import dayjs from "dayjs";
 //     url:'https://cmsres.dianzhenkeji.com/transcode/2020/5/27/1265458130520657920.mp4',
 // }
 
-let articleData = ref({});
-const route = useRoute();
-const { id } = route.query;
-const type = ref("");
-type.value = id;
-console.log(id, route, "iddd");
-let testUrl=`https://pubmod.hntv.tv/mobile/cms/article?articleId=${id}&tenantId=1`
-let prodUrl=`https://eicc.hndt.com/mobile/cms/articlewithrelated?articleId=${id}`
-const getDetail = async () => {
-  const data = await useFetch(testUrl);
-  console.log(data, "asta");
-  let {
-    data: {
-      _rawValue: { code, msg, result },
-    },
-  } = data;
-  console.log(code, msg, articleData, "sda");
-  if (code != 0) return;
-  articleData.value = result;
-  useSeoMeta({
-    title: `EICC ${result.title}`,
-    description: result.seoDescription,
-    keywords: result.seoKeywords,
-  });
-};
-getDetail();
-let likes=ref(false)
+// const route = useRoute();
+// const { id } = route.query;
+// type.value = id;
+let { articleData, timeParse } = useDetail();
+let likes = ref(false);
 const handleLike = () => {
-  likes.value=!likes.value
+  likes.value = !likes.value;
 };
-const timeParse = (time) => {
-  if (time) {
-    return dayjs(time).format("YYYY-MM-DD HH:mm");
-  } else {
-    return "";
-  }
-};
+
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @import "./index.scss";
 </style>

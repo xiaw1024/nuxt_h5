@@ -4,7 +4,7 @@
         <img :class="['arrow',item.toggle?'expand':'']" src="~/assets/img/arrow_close.png" alt="">
         <span class="menu_name">{{item.channelName}}</span>
     </div>
-    <div v-for="(ele,idx) in item.children" class="second_item" :key="idx" v-show="item.toggle">
+    <div v-for="(ele,idx) in item.children" class="second_item" :key="idx" v-show="item.toggle" @click="handleChannel(ele)">
         <span class="dot"></span>
         <span class="second_name">{{ele.channelName}}</span>
     </div>
@@ -13,6 +13,7 @@
 
 <script setup>
 import {defineProps,defineEmits} from 'vue'
+import {useRouter} from 'vue-router'
 const props=defineProps({
     item:{
         type:Array,
@@ -42,6 +43,13 @@ const props=defineProps({
 const handleToggle=(item)=>{
     item.toggle=!item.toggle
 
+}
+const router=useRouter()
+const handleChannel=(item)=>{
+    console.log(item.channelId,'item')
+    router.push({
+        path:`/column/${item.channelId}`,
+    })
 }
 </script>
 
@@ -79,6 +87,7 @@ const handleToggle=(item)=>{
         justify-content: flex-start;
         align-items: center;
         height: 30px;
+        cursor: pointer;
         .dot{
             display: block;
             width: 4px;

@@ -1,6 +1,13 @@
 import { ref, onMounted, onUnmounted, onActivated } from "vue";
 
 export const useList = () => {
+  const route = useRoute();
+  let { id } = route.params
+  if(!id){
+    id ="1760504763108921345"
+  }
+  console.log(id,"id");
+  
   let pageSize = 3;
   let pageNo = ref(1)
   let testListUrl = `https://pubmod.hntv.tv/mobile/cms/articles?channelId=1760504763108921345&pageNo=${pageNo.value}&pageSize=${pageSize}`;
@@ -8,7 +15,7 @@ export const useList = () => {
   const finished = ref(false);
   let List = ref([]);
   const getTestList = async () => {
-    testListUrl = `https://pubmod.hntv.tv/mobile/cms/articles?channelId=1760504763108921345&pageNo=${pageNo.value}&pageSize=${pageSize}`;
+    testListUrl = `https://pubmod.hntv.tv/mobile/cms/articles?channelId=${id}&pageNo=${pageNo.value}&pageSize=${pageSize}`;
     const data = await useFetch(testListUrl);
 
     let {

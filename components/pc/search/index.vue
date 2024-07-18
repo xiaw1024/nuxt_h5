@@ -4,8 +4,8 @@
       <img class="bg" src="~/assets/img/banner.png" alt="" />
       <div class="search">
         <div class="search_box">
-          <input type="text" placeholder="search" />
-          <img class="search_icon" src="~/assets/img/search.png" alt="" />
+          <input type="text" placeholder="search" v-model="allKeywords" />
+          <img class="search_icon" src="~/assets/img/search.png" alt="" @click="handleSearch" />
         </div>
       </div>
     </div>
@@ -27,15 +27,24 @@
 </template>
 
 <script setup >
-const { loading, finished, List, getTestList, pageNo } = useList();
-
+const { loading, finished, List, getTestList, pageNo } = useSearch();
+import {useRouter, useRoute} from 'vue-router'
+let allKeywords=ref('')
+const router = useRoute()
 const onLoad = () => {
   // 异步更新数据
   // setTimeout 仅做示例，真实场景中一般为 ajax 请求
   if (process.client) {
+    //值回显
+    allKeywords.value=router.query.allKeywords||""
     pageNo.value++;
-    getTestList();
+    // getTestList();
   }
+};
+const handleSearch = () => {
+  router.push({
+        path:`/search?allKeywords=${allKeywords.value}`,
+    })
 };
 </script>
 

@@ -1,9 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  routeRules: {
+    '/categories/:id': { ssr: true },
+  },
   devtools: {
     enabled: true // or false to disable
   },
-
+devServer: {
+    https: false,
+    port: 3000,
+    host: '0.0.0.0',
+  },
   // 页面路由
   pages: true,
 

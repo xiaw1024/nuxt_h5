@@ -11,6 +11,11 @@
     </div>
     <img class="cover" src="~/assets/img/cover.png" alt="" />
 
+    <!-- <div class="container">
+          <template v-for="(item,index) in List" :key="index">
+          <MbCard :data="item"></MbCard>
+          </template>
+      </div> -->
     <div class="container">
       <van-list
         v-model:loading="loading"
@@ -19,27 +24,24 @@
         @load="onLoad"
       >
         <template v-for="item in List" :key="item.id">
-          <PcCard :data="item"></PcCard>
+          <MbCard :data="item"></MbCard>
         </template>
       </van-list>
     </div>
   </div>
 </template>
-
-<script setup >
+<script setup>
 const { loading, finished, List, getTestList, pageNo } = useList();
-
 const onLoad = () => {
   // 异步更新数据
   // setTimeout 仅做示例，真实场景中一般为 ajax 请求
   if (process.client) {
+    console.log(pageNo.value, "pageNo");
     pageNo.value++;
     getTestList();
   }
 };
 </script>
-
-<style lang="scss" >
-@import "./index.scss";
-
+<style lang="scss" scoped>
+@use "./index.scss";
 </style>

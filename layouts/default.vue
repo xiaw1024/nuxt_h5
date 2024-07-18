@@ -247,6 +247,7 @@ const {columList} = useColumn()
     justify-content: flex-start;
     align-content: center;
     position: relative;
+    cursor: pointer;
     .bar_icon {
       width: 15px;
       height: 15px;

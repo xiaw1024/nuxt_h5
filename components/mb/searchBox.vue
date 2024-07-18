@@ -1,0 +1,97 @@
+<template>
+  <div class="search">
+        <div class="search_box">
+          <input type="text" placeholder="search" v-model="allKeywords" />
+          <img class="search_icon" src="~/assets/img/search.png" alt=""  @click="handleSearch"  />
+        </div>
+      </div>
+</template>
+<script setup>
+import {useRouter} from 'vue-router'
+
+const router = useRouter();
+let allKeywords = ref("");
+if (process.client) {
+    //值回显
+    allKeywords.value = router.query?.allKeywords || "";
+  }
+const handleSearch = () => {
+  router.push({
+    path: `/search`,
+    query: { allKeywords: allKeywords.value },
+  });
+};
+</script>
+<style lang='scss' scoped>
+.banner {
+  width: 375px;
+  min-width: unset;
+  .header_bg {
+    width: 375px;
+    position: relative;
+    border-radius: 0px 0px 22px 22px;
+    overflow: hidden;
+    .bg {
+      width: 100%;
+      display: block;
+    }
+    .search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+
+      .search_box {
+        width: 276px;
+        height: 36px;
+        background-image: url("~/assets/img/search_bg_m.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        input {
+          width: 180px;
+          height: 36px;
+          background-color: rgba(255, 255, 255, 0);
+          border: none;
+          outline: none;
+          font-size: 12px;
+          line-height: 36px;
+          font-family: HelveticaNeue, HelveticaNeue;
+          font-weight: 500;
+          color: #fff;
+          &::placeholder {
+            color: #fff;
+          }
+        }
+
+        .search_icon {
+          width: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .cover {
+    width: 100%;
+    height: 45px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .container {
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 30px 16px 160px 16px;
+    box-sizing: border-box;
+    width: 375px;
+  }
+}
+
+</style>

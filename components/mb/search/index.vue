@@ -2,15 +2,21 @@
   <div class="banner">
     <div class="header_bg">
       <img class="bg" src="~/assets/img/banner.png" alt="" />
+      <MbSearch></MbSearch>
       <div class="search">
         <div class="search_box">
           <input type="text" placeholder="search" />
-          <img class="search_icon" src="~/assets/img/search.png" alt="" />
+          <img class="search_icon" src="~/assets/img/search.png" alt="" @click="handleSearch"  />
         </div>
       </div>
     </div>
     <img class="cover" src="~/assets/img/cover.png" alt="" />
 
+    <!-- <div class="container">
+            <template v-for="(item,index) in List" :key="index">
+            <MbCard :data="item"></MbCard>
+            </template>
+        </div> -->
     <div class="container">
       <van-list
         v-model:loading="loading"
@@ -19,27 +25,32 @@
         @load="onLoad"
       >
         <template v-for="item in List" :key="item.id">
-          <PcCard :data="item"></PcCard>
+          <MbCard :data="item"></MbCard>
         </template>
       </van-list>
     </div>
   </div>
 </template>
-
-<script setup >
-const { loading, finished, List, getTestList, pageNo } = useList();
-
+<script setup>
+const { loading, finished, List, getTestList, pageNo } = useSearch();
+let allKeywords = ref("");
+const router = useRoute();
 const onLoad = () => {
   // 异步更新数据
   // setTimeout 仅做示例，真实场景中一般为 ajax 请求
   if (process.client) {
+    //值回显
+    allKeywords.value = router.query.allKeywords || "";
     pageNo.value++;
-    getTestList();
+    // getTestList();
   }
 };
+const handleSearch = () => {
+  router.push({
+    path: `/search?allKeywords=${allKeywords.value}`,
+  });
+};
 </script>
-
-<style lang="scss" >
-@import "./index.scss";
-
+<style lang="scss" scoped>
+@use "./index.scss";
 </style>
