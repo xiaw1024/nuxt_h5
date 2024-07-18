@@ -15,6 +15,7 @@ export const useList = () => {
   const finished = ref(false);
   let List = ref([]);
   const getTestList = async () => {
+    loading.value=true
     testListUrl = `https://pubmod.hntv.tv/mobile/cms/articles?channelId=${id}&pageNo=${pageNo.value}&pageSize=${pageSize}`;
     const data = await useFetch(testListUrl);
 

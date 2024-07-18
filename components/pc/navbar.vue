@@ -78,6 +78,9 @@ const handleChannel=(item)=>{
             text-align: left;
             font-style: normal;
             margin-left: 5px;
+             &:hover{
+                color: #111;
+            }
         }
 
     }
@@ -102,6 +105,9 @@ const handleChannel=(item)=>{
             text-align: left;
             font-style: normal;
             margin-left: 6px;
+            &:hover{
+                color: #333;
+            }
         }
     }
 }

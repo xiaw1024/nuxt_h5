@@ -2,12 +2,14 @@
   <div class="banner">
     <div class="header_bg">
       <img class="bg" src="~/assets/img/banner.png" alt="" />
-      <div class="search">
+      <PcSearchBox></PcSearchBox>
+
+      <!-- <div class="search">
         <div class="search_box">
           <input type="text" placeholder="search" />
           <img class="search_icon" src="~/assets/img/search.png" alt="" />
         </div>
-      </div>
+      </div> -->
     </div>
     <img class="cover" src="~/assets/img/cover.png" alt="" />
 

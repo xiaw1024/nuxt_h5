@@ -1,26 +1,18 @@
 <template>
   <div class="search">
-        <div class="search_box">
-          <input type="text" placeholder="search" v-model="allKeywords" />
-          <img class="search_icon" src="~/assets/img/search.png" alt=""  @click="handleSearch"  />
-        </div>
-      </div>
+    <div class="search_box">
+      <input type="text" placeholder="search" v-model="allKeywords" />
+      <img
+        class="search_icon"
+        src="~/assets/img/search.png"
+        alt=""
+        @click="handleSearch"
+      />
+    </div>
+  </div>
 </template>
 <script setup>
-import {useRouter} from 'vue-router'
-
-const router = useRouter();
-let allKeywords = ref("");
-if (process.client) {
-    //值回显
-    allKeywords.value = router.query?.allKeywords || "";
-  }
-const handleSearch = () => {
-  router.push({
-    path: `/search`,
-    query: { allKeywords: allKeywords.value },
-  });
-};
+let {handleSearch,allKeywords}=useSearchRoute()
 </script>
 <style lang='scss' scoped>
 .banner {
@@ -93,5 +85,4 @@ const handleSearch = () => {
     width: 375px;
   }
 }
-
 </style>

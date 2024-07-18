@@ -240,7 +240,7 @@ const {columList} = useColumn()
   }
 }
 .show {
-  width: 280px;
+  width: 240px;
   padding: 0 20px;
 }
 </style>

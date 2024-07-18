@@ -2,13 +2,13 @@
   <div class="banner">
     <div class="header_bg">
       <img class="bg" src="~/assets/img/banner.png" alt="" />
-      <MbSearch></MbSearch>
-      <div class="search">
+      <MbSearchBox></MbSearchBox>
+      <!-- <div class="search">
         <div class="search_box">
           <input type="text" placeholder="search" />
           <img class="search_icon" src="~/assets/img/search.png" alt="" @click="handleSearch"  />
         </div>
-      </div>
+      </div> -->
     </div>
     <img class="cover" src="~/assets/img/cover.png" alt="" />
 
@@ -32,7 +32,7 @@
   </div>
 </template>
 <script setup>
-const { loading, finished, List, getTestList, pageNo } = useSearch();
+const { loading, finished, List, getSearchList, pageNo } = useSearch();
 let allKeywords = ref("");
 const router = useRoute();
 const onLoad = () => {
@@ -40,16 +40,16 @@ const onLoad = () => {
   // setTimeout 仅做示例，真实场景中一般为 ajax 请求
   if (process.client) {
     //值回显
-    allKeywords.value = router.query.allKeywords || "";
+    allKeywords.value = router.params.allKeywords || "";
     pageNo.value++;
-    // getTestList();
+    getSearchList();
   }
 };
-const handleSearch = () => {
-  router.push({
-    path: `/search?allKeywords=${allKeywords.value}`,
-  });
-};
+// const handleSearch = () => {
+//   router.push({
+//     path: `/search?allKeywords=${allKeywords.value}`,
+//   });
+// };
 </script>
 <style lang="scss" scoped>
 @use "./index.scss";

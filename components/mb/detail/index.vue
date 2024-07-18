@@ -3,12 +3,13 @@
     <div class="banner">
       <div class="header_bg">
         <img class="bg" src="~/assets/img/banner.png" alt="" />
-        <div class="search">
+        <MbSearchBox></MbSearchBox>
+        <!-- <div class="search">
           <div class="search_box">
             <input type="text" placeholder="search" />
             <img class="search_icon" src="~/assets/img/search.png" alt="" />
           </div>
-        </div>
+        </div> -->
       </div>
       <img class="cover" src="~/assets/img/cover.png" alt="" />
     </div>
@@ -33,7 +34,7 @@
       <div class="like_box" @click="handleLike">
         <img v-if="likes" class="like" src="~/assets/img/like.png" alt="" />
         <img v-else class="liked" src="~/assets/img/liked.png" alt="" />
-        <span>{{ articleData.collection }}</span>
+        <span>{{ articleData.clickNum }}</span>
       </div>
     </div>
   </div>

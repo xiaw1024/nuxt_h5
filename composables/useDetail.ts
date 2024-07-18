@@ -9,6 +9,7 @@ export const useDetail = () => {
   let testUrl = `https://pubmod.hntv.tv/mobile/cms/article?articleId=${id}&tenantId=1`;
   let articleData = ref({});
   const getDetail = async () => {
+
     const data = await useFetch(testUrl);
     console.log(data, "asta");
     let {

@@ -2,12 +2,13 @@
   <div class="detail">
     <div class="header"></div>
     <div class="banner">
-      <div class="search_box">
+      <!-- <div class="search_box">
         <div class="inner_search">
           <input type="text" name="" id="" placeholder="search" />
           <img class="search_icon" src="~/assets/img/search_d.png" alt="" />
         </div>
-      </div>
+      </div> -->
+      <PcSearchBox></PcSearchBox>
     </div>
     <div class="detail_content">
       <p class="article_title">{{ articleData.title }}</p>
@@ -30,7 +31,7 @@
       <div class="like_box" @click="handleLike">
         <img v-if="likes" class="like" src="~/assets/img/like.png" alt="" />
         <img v-else class="liked" src="~/assets/img/liked.png" alt="" />
-        <span>{{ articleData.collection }}</span>
+        <span>{{ articleData.clickNum }}</span>
       </div>
     </div>
   </div>

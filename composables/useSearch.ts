@@ -1,7 +1,7 @@
 
 
 
-import { ref, onMounted, onUnmounted, onActivated } from "vue";
+import { ref, onMounted, onUnmounted, onActivated, } from "vue";
 import { useRoute } from "vue-router";
 
 export const useSearch = () => {
@@ -9,16 +9,16 @@ export const useSearch = () => {
   let pageNo = ref(1)
   let params=ref('')
   const route = useRoute();
-  const { allKeywords } = route.query;
+  const { keywords } = route.params;
   const loading = ref(false);
   const finished = ref(false);
   let List = ref([]);
   const getSearchList = async () => {
-      let url=`https://eicc.hndt.com/mobile/cms/fullText?allKeywords=${allKeywords}&pageNo=${pageNo.value}&pageSize=${pageSize}`
+    loading.value = true;
+
+      let url=`https://eicc.hndt.com/mobile/cms/fullText?allKeywords=${keywords}&pageNo=${pageNo.value}&pageSize=${pageSize}`
       
       const data = await useFetch(url);
-      console.log(data,'seatchData');
-
     let {
       data: {
         _rawValue: {
@@ -28,10 +28,11 @@ export const useSearch = () => {
         },
       },
     } = data;
-    // console.log(code,msg,content,'sda')
     if (code != 0) return;
     if(!result){
+      console.log(result,'sda+++++++++++++')
       List.value=[]
+      loading.value = false;
       finished.value = true;
       return
     }
@@ -48,9 +49,16 @@ export const useSearch = () => {
       finished.value = true;
     }
   };
-//   onActivated(() => {
+  // watch(allKeywords,(newvalue)=>{
+  //   if(newvalue){
+  //     pageNo.value=1
+  //     List.value=[]
+  //     getSearchList()
+  //   }
+  // })
+  // onActivated(() => {
     getSearchList();
-//   });
+  // });
   return {
     loading,
     finished,
