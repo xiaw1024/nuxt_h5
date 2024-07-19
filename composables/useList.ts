@@ -4,19 +4,23 @@ export const useList = () => {
   const route = useRoute();
   let { id } = route.params
   if(!id){
-    id ="1760504763108921345"
+    // id ="1760504763108921345"
+    //default home
+    id="1810152498613387266"
   }
   console.log(id,"id");
   
   let pageSize = 3;
   let pageNo = ref(1)
+
   let testListUrl = `https://pubmod.hntv.tv/mobile/cms/articles?channelId=1760504763108921345&pageNo=${pageNo.value}&pageSize=${pageSize}`;
   const loading = ref(false);
   const finished = ref(false);
   let List = ref([]);
   const getTestList = async () => {
     loading.value=true
-    testListUrl = `https://pubmod.hntv.tv/mobile/cms/articles?channelId=${id}&pageNo=${pageNo.value}&pageSize=${pageSize}`;
+    testListUrl=`https://eicc.hndt.com/mobile/cms/articles?channelId=${id}&pageNo=${pageNo.value}&pageSize=${pageSize}`
+    // testListUrl = `https://pubmod.hntv.tv/mobile/cms/articles?channelId=${id}&pageNo=${pageNo.value}&pageSize=${pageSize}`;
     const data = await useFetch(testListUrl);
 
     let {

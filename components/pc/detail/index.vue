@@ -2,13 +2,15 @@
   <div class="detail">
     <div class="header"></div>
     <div class="banner">
-      <!-- <div class="search_box">
-        <div class="inner_search">
+      <!-- <div class="search">
+        <div class="search_box">
           <input type="text" name="" id="" placeholder="search" />
           <img class="search_icon" src="~/assets/img/search_d.png" alt="" />
         </div>
       </div> -->
+      <div class="header_bg">
       <PcSearchBox></PcSearchBox>
+      </div>
     </div>
     <div class="detail_content">
       <p class="article_title">{{ articleData.title }}</p>

@@ -19,14 +19,16 @@
     <div class="main">
       <slot></slot>
     </div>
-    
+    <div class="overlay" v-show="siderbar" @click="handleClose">
+
+    </div>
     <div :class="['sidebar', siderbar ? 'show' : '']">
-      <img
+      <!-- <img
         @click="handleClose"
         class="close"
         src="~/assets/img/close.png"
         alt=""
-      />
+      /> -->
       <div class="manue">
         <img class="bar_icon" src="~/assets/img/like.png" alt="" />
         <span class="manue1">popular</span>
@@ -54,19 +56,19 @@
           <NuxtLink to="/about">About Us</NuxtLink>
         </div>
         <div class="partner-list">
-          <a href="http://ww.baidu.com">
+          <a href="https://www.facebook.com/">
             <img class="partner" src="~/assets/img/face.png" alt="" />
           </a>
-          <a href="http://ww.baidu.com">
+          <a href="https://www.instagram.com/">
             <img class="partner" src="~/assets/img/ins.png" alt="" />
           </a>
-          <a href="http://ww.baidu.com">
+          <a href="https://www.tiktok.com/">
             <img class="partner" src="~/assets/img/tiktok.png" alt="" />
           </a>
-          <a href="http://ww.baidu.com">
+          <a href="https://x.com/">
             <img class="partner" src="~/assets/img/twitter.png" alt="" />
           </a>
-          <a href="http://ww.baidu.com">
+          <a href="https://www.youtube.com/">
             <img class="partner" src="~/assets/img/youtobe.png" alt="" />
           </a>
         </div>
@@ -121,6 +123,16 @@ const {columList} = useColumn()
   width: 20px;
   cursor: pointer;
   z-index: 10;
+}
+.overlay{
+  position: fixed;
+  width: 100%;;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0.48;
 }
 
 .sidebar {
@@ -191,6 +203,10 @@ const {columList} = useColumn()
       display: flex;
       justify-content: center;
       align-items: center;
+      img{
+                width: 18px;
+                height: 18px;
+            }
       .toggle {
         width: 18px;
         display: block;

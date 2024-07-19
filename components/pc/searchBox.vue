@@ -1,7 +1,7 @@
 <template>
   <div class="search">
         <div class="search_box">
-          <input type="text" placeholder="search" v-model="allKeywords" />
+          <input type="text" placeholder="search" v-model="allKeywords" @keypress.enter="handleSearch" />
           <img class="search_icon" src="~/assets/img/search.png" alt=""  @click="handleSearch"  />
         </div>
       </div>
@@ -16,6 +16,7 @@ let {handleSearch,allKeywords}=useSearchRoute()
     .header_bg {
       width: 100%;
       position: relative;
+      height: 100%;
       .bg {
         width: 100%;
         display: block;

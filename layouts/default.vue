@@ -32,23 +32,25 @@
       <div class="right">
         <p>Follow us</p>
         <div class="partner-list">
-          <a href="http://ww.baidu.com">
-            <img class="partner" src="~/assets/img/face.png" alt="" />
+          <a href="https://www.facebook.com/">
+            <img class="partner" src="~/assets/img/f_fb.png" alt="" />
           </a>
-          <a href="http://ww.baidu.com">
-            <img class="partner" src="~/assets/img/ins.png" alt="" />
+          <a href="https://www.instagram.com/">
+            <img class="partner" src="~/assets/img/f_ins.png" alt="" />
           </a>
-          <a href="http://ww.baidu.com">
-            <img class="partner" src="~/assets/img/tiktok.png" alt="" />
+          <a href="https://www.tiktok.com/">
+            <img class="partner" src="~/assets/img/f_tt.png" alt="" />
           </a>
-          <a href="http://ww.baidu.com">
-            <img class="partner" src="~/assets/img/twitter.png" alt="" />
+          <a href="https://x.com/">
+            <img class="partner" src="~/assets/img/f_tw.png" alt="" />
           </a>
-          <a href="http://ww.baidu.com">
-            <img class="partner" src="~/assets/img/youtobe.png" alt="" />
+          <a href="https://www.youtube.com/">
+            <img class="partner" src="~/assets/img/f_ytb.png" alt="" />
           </a>
         </div>
       </div>
+    </div>
+    <div class="overlay" v-show="siderbar" @click="handleClose">
     </div>
     <div :class="['sidebar', siderbar ? 'show' : '']">
       <img
@@ -84,19 +86,19 @@
           <NuxtLink to="/about">About Us</NuxtLink>
         </div>
         <div class="partner-list">
-          <a href="http://ww.baidu.com">
+          <a href="https://www.facebook.com/">
             <img class="partner" src="~/assets/img/face.png" alt="" />
           </a>
-          <a href="http://ww.baidu.com">
+          <a href="https://www.instagram.com/">
             <img class="partner" src="~/assets/img/ins.png" alt="" />
           </a>
-          <a href="http://ww.baidu.com">
+          <a href="https://www.tiktok.com/">
             <img class="partner" src="~/assets/img/tiktok.png" alt="" />
           </a>
-          <a href="http://ww.baidu.com">
+          <a href="https://x.com/">
             <img class="partner" src="~/assets/img/twitter.png" alt="" />
           </a>
-          <a href="http://ww.baidu.com">
+          <a href="https://www.youtube.com/">
             <img class="partner" src="~/assets/img/youtobe.png" alt="" />
           </a>
         </div>
@@ -156,7 +158,9 @@ const {columList} = useColumn()
   display: flex;
   justify-content: space-around;
   align-items: center;
-
+  background-image: url("~/assets/img/f_bg.png");
+      background-repeat: no-repeat;
+      background-size: cover;
   .left {
     display: flex;
     flex-direction: column;
@@ -190,16 +194,25 @@ const {columList} = useColumn()
     }
     .partner-list {
       display: flex;
-
       .partner {
         width: 30px;
         height: 30px;
         margin-right: 10px;
-        background-color: #fff;
+        // background-color: #fff;
         border-radius: 50%;
       }
     }
   }
+}
+.overlay{
+  position: fixed;
+  width: 100%;;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0.48;
 }
 .sidebar {
   position: fixed;
@@ -269,6 +282,10 @@ const {columList} = useColumn()
       display: flex;
       justify-content: center;
       align-items: center;
+      img{
+                width: 18px;
+                height: 18px;
+            }
       .toggle {
         width: 18px;
         display: block;

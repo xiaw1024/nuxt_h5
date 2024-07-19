@@ -6,7 +6,8 @@ import { useRoute } from "vue-router";
 export const useDetail = () => {
   const route = useRoute();
   const { id } = route.query;
-  let testUrl = `https://pubmod.hntv.tv/mobile/cms/article?articleId=${id}&tenantId=1`;
+  let testUrl=`https://eicc.hndt.com/mobile/cms/articlewithrelated?articleId=${id}`
+  // let testUrl = `https://pubmod.hntv.tv/mobile/cms/article?articleId=${id}&tenantId=1`;
   let articleData = ref({});
   const getDetail = async () => {
 

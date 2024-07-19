@@ -6,14 +6,14 @@
     </div>
     <div v-for="(ele,idx) in item.children" class="second_item" :key="idx" v-show="item.toggle" @click="handleChannel(ele)">
         <span class="dot"></span>
-        <span class="second_name">{{ele.channelName}}</span>
+        <span :class="['second_name',activeColumn==ele.channelId?'active':'']">{{ele.channelName}}</span>
     </div>
   </div>
 </template>
 
 <script setup>
-import {defineProps,defineEmits} from 'vue'
-import {useRouter} from 'vue-router'
+import {defineProps,defineEmits,computed} from 'vue'
+import {useRouter,useRoute} from 'vue-router'
 const props=defineProps({
     item:{
         type:Array,
@@ -45,6 +45,11 @@ const handleToggle=(item)=>{
 
 }
 const router=useRouter()
+const route=useRoute()
+let defaultID='1810152498613387266'
+let activeColumn=computed(()=>{
+    return route.params.id || defaultID
+})
 const handleChannel=(item)=>{
     console.log(item.channelId,'item')
     router.push({
@@ -101,6 +106,10 @@ const handleChannel=(item)=>{
             text-align: left;
             font-style: normal;
             margin-left: 6px;
+        }
+        .active{
+            color: #333;
+            font-weight: bold;
         }
     }
 }

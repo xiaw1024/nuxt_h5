@@ -18,6 +18,11 @@ const url = computed(() => {
     });
   }
 });
+const poster= computed(() => {
+  if (props.articleData.coverImagesList) {
+    return props.articleData.coverImagesList[0].url|| ''
+  }
+})
 </script>
 <template>
   <video
@@ -28,6 +33,7 @@ const url = computed(() => {
     preload="metadata"
     playsInline
     x5-playsinline="true"
+    :poster="poster"
   ></video>
 </template>
 <style lang="scss">

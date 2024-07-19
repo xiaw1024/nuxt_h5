@@ -37,6 +37,10 @@
 
       .play_btn{
         position: relative;
+        img{
+            width: 100%;
+            max-height: 600px;
+        }
         .playicon{
             width: 53px;
             height: 53px;

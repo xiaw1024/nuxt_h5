@@ -1,8 +1,9 @@
 <template>
   <div class="card" @click="goToDetail">
-    <img v-if="data.articleType == 0" :src="data?.coverImagesList[0]?.url||''" alt="" />
+    <img v-if="data.articleType == 0" :src="data?.coverImagesList[0]?.url||''" alt=""  />
     <div class="play_btn" v-if="data.articleType == 1">
-      <video  :src="data.url" controls></video>
+      <img v-if="data.articleType == 1" :src="data?.coverImagesList[0]?.url||''"  alt="" object-fit="cover" />
+      <!-- <video  :src="data.url" controls :poster="data?.coverImagesList[0]?.url||''"></video> -->
       <img class="playicon" src="~/assets/img/play.png" alt="">
     </div>
     <div class="info" v-show="!hide">
